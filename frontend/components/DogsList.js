@@ -11,7 +11,13 @@ export default function DogsList({dogs, getDogs, setCurrentDog }) {
     navigate('form') 
   }
   const deleteDog = id => {
-    console.log('deleting...', id);
+    fetch(`/api/dogs/${id}`, { method: 'DELETE' }) 
+      .then(res => {
+        if (!res.ok) throw new Error('Problem DELETing')
+        getDogs()
+        setCurrentDog(null) 
+      })
+      .catch(err => console.error(err)) 
   }
   return (
     <div>
