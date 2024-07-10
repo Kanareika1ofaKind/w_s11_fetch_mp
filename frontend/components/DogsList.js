@@ -1,10 +1,10 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-export default function DogsList({dogs, getDogs, setCurrentDog }) {
+export default function DogsList({ dogs, getDogs, setCurrentDog }) {
   const navigate = useNavigate() 
   const editDog = id => {
-    console.log('editing...', id);
+    //console.log('editing...', id);
     // set that id as the current id
     setCurrentDog(id)
     // navigate to the form
@@ -26,7 +26,7 @@ export default function DogsList({dogs, getDogs, setCurrentDog }) {
         {
           dogs.map(dog => (
             <li key={dog.id}> 
-              {dog.name},{dog.breed}, {dog.adopted ? '' : 'NOT '}adopted 
+              {dog.name}, {dog.breed}, {dog.adopted ? '' : 'NOT '}adopted 
               <div>
                 <button onClick={() => editDog(dog.id)}>Edit</button>
                 <button onClick={() => deleteDog(dog.id)}>Delete</button>
