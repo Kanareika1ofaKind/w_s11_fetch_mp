@@ -16,6 +16,8 @@ export default function App() {
       if (!res.ok) throw new Error('Problem GETing dogs')
       return res.json() 
     })
+    .then(setDogs) 
+    .catch(err => console.error(err)) 
    }
   return (
     <div>
@@ -27,6 +29,7 @@ export default function App() {
         <Route path="/" element={<DogsList 
         dogs={dogs}
         getDogs={getDogs}
+        setCurrentDog={setCurrentDog} 
         />} />
         <Route path="/form" element={<DogForm 
         dog={currentDogId && dogs.find(d => d.id == currentDogId)}
